@@ -11,6 +11,15 @@ namespace ECommereceMVC.Data
         }
 
         public DbSet<Category> Categories { get; set; }
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "History", DisplayOrder = 1 },
+                new Category { Id = 2, Name = "Novel", DisplayOrder = 1 },
+                new Category { Id = 3, Name = "Story", DisplayOrder = 2 }
+                );
+        }
+
     }
 }
