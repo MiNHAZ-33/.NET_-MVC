@@ -66,5 +66,30 @@ namespace ECommereceMVC.Controllers
             return View();
             
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if(id == null || id < 1)
+            {
+                return BadRequest();
+            }
+
+            Category? categoryFromDb = _db.Categories.Find(id);
+
+            return View(categoryFromDb);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int? id)
+        {
+            Category? obj = _db.Categories.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.Categories.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
