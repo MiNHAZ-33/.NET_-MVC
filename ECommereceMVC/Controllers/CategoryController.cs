@@ -1,5 +1,6 @@
-﻿using ECommereceMVC.Data;
-using ECommereceMVC.Models;
+﻿
+using Ecommerce.DataAccess.Data;
+using Ecommerce.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommereceMVC.Controllers
