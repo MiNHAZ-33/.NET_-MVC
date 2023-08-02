@@ -1,5 +1,6 @@
 ﻿@model List<Category>
 
+<partial name="_Notification"/>
 
 <div class="container">
     <div class="row pt-4 pb-3">
@@ -11,9 +12,7 @@
                 <i class="bi bi-plus-square-fill"></i>
                 Create New Category
             </a>
-
         </div>
-
     </div>
 </div>
 
@@ -28,8 +27,6 @@
     <tbody>
         @foreach(var obj in Model.OrderBy(u=>u.DisplayOrder))
         {
-            
-        
         <tr>
             <td>@obj.Name</td>
             <td>@obj.DisplayOrder</td>
@@ -43,7 +40,6 @@
                             <i class="bi bi-trash-fill"></i>
                             Delete
                         </a>
-
                 </div>
             </td>
         </tr>
