@@ -4,8 +4,9 @@ using Ecommerce.DataAccess.Repository.IRepository;
 using Ecommerce.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ECommereceMVC.Controllers
+namespace ECommereceMVC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -68,17 +69,17 @@ namespace ECommereceMVC.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-            
+
         }
 
         public IActionResult Delete(int? id)
         {
-            if(id == null || id < 1)
+            if (id == null || id < 1)
             {
                 return BadRequest();
             }
 
-            Category? categoryFromDb = _unitOfWork.Category.Get(u =>u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
