@@ -34,6 +34,7 @@ namespace Ecommerce.DataAccess.Data
                     Price50 = 85,
                     Price100 = 80,
                     CategoryId = 1,
+                    ImageUrl = " "
                 },
                 new Product
                 {
@@ -47,6 +48,7 @@ namespace Ecommerce.DataAccess.Data
                     Price50 = 170,
                     Price100 = 150,
                     CategoryId = 3,
+                    ImageUrl = " "
                 }
                 );
         }
