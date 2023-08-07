@@ -74,6 +74,9 @@ namespace Ecommerce.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -100,6 +103,8 @@ namespace Ecommerce.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
@@ -107,6 +112,7 @@ namespace Ecommerce.DataAccess.Migrations
                         {
                             Id = 1,
                             Author = "Eichirio Oda",
+                            CategoryId = 1,
                             Description = "Can be summed up in one line. The boy with strawhat wanna become the king of the pirates",
                             ISBN = "XDE23234",
                             ListPrice = 99.0,
@@ -119,6 +125,7 @@ namespace Ecommerce.DataAccess.Migrations
                         {
                             Id = 2,
                             Author = "Humayun Ahmed",
+                            CategoryId = 3,
                             Description = "An unseen look at the event that is unfolding in the year 1975 in Bangladeshi politics",
                             ISBN = "ZXDH24XC",
                             ListPrice = 200.0,
@@ -127,6 +134,17 @@ namespace Ecommerce.DataAccess.Migrations
                             Price50 = 170.0,
                             Title = "Deyal"
                         });
+                });
+
+            modelBuilder.Entity("Ecommerce.Model.Models.Product", b =>
+                {
+                    b.HasOne("Ecommerce.Model.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }
