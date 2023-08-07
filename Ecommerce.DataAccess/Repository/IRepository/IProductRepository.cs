@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork
+    internal interface IProductRepository
     {
-        ICategoryRepository Category { get; }
-        IProductRepository Product { get; }
-        void Save();
     }
 }
