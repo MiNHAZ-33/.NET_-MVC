@@ -2,6 +2,9 @@
 
 <form method="post" enctype="multipart/form-data">
     <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.ImageUrl" hidden/>
+    <div class="row">
+        <div class="col-10">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">@(
@@ -60,7 +63,16 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <button type="submit" class="btn btn-primary form-control" style="width:150px">Create</button>
+                @if(Model.Product.Id != 0)
+                        {
+                            
+                            <button type="submit" class="btn btn-primary form-control" style="width:150px">Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary form-control" style="width:150px">Create</button>
+
+                        }
 
             </div>
             <div class="col-6">
@@ -70,6 +82,13 @@
         </div>
 
          </div>
+
+        </div>
+        <div class="col-2">
+            <img src="@Model.Product.ImageUrl" width="100%" style="border-radius:5px; border:1px solid" />
+        </div>
+
+    </div>
 
 </form>
 

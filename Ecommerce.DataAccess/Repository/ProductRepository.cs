@@ -18,7 +18,22 @@ namespace Ecommerce.DataAccess.Repository
         }
         public void Update(Product obj)
         {
-            _db.Products.Update(obj);
+            var objFromDb = _db.Products.First(p => p.Id == obj.Id);
+            if(objFromDb != null) { 
+                objFromDb.Title = obj.Title;
+                objFromDb.Description = obj.Description;
+                objFromDb.CategoryId = obj.CategoryId;
+                objFromDb.Price = obj.Price;
+                objFromDb.ListPrice = obj.ListPrice;
+                objFromDb.Author = obj.Author;
+                objFromDb.Price100 = obj.Price100;
+                objFromDb.ISBN = obj.ISBN;
+                objFromDb.Price50 = obj.Price50;
+                if(objFromDb.ImageUrl != null)
+                {
+                    objFromDb.ImageUrl = obj.ImageUrl;
+                }
+            }
         }
     }
 }
